@@ -1,18 +1,22 @@
 defmodule Cards do
-  @moduledoc """
-  Documentation for Cards.
-  """
+  def create_deck do
+    values = ["Ace", "Two", "Three", "Four", "Five"]
+    suits  = ["Spades", "Clubs", "Hearts", "Diamons"]
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Cards.hello
-      :world
-
-  """
-  def hello do
-    :world
+    for value <- values, suit <- suits do
+      "#{value} of #{suit}"
+    end
   end
+
+  def shuffle(deck) do
+    Enum.shuffle(deck)
+  end
+
+   def contains?(deck, hand) do
+     Enum.member?(deck, hand)
+   end
+
+   def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
+   end
 end
